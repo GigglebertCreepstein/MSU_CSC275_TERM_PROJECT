@@ -394,9 +394,9 @@ size = Vector2(14.1807, 14.706)
 size = Vector2(14.4434, 16.019)
 
 [node name="trad_player" type="CharacterBody2D"]
-scale = Vector2(3.80798, 3.80798)
 motion_mode = 1
 script = ExtResource("1_vs87m")
+speed = 50
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6.03995)
