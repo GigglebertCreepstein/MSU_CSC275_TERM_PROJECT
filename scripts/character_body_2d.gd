@@ -10,10 +10,13 @@ var freeze_player = false
 enum direction { LEFT, RIGHT, UP, DOWN, UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT}
 var current_direction = direction.DOWN
 ###########################################
+
 func _ready() -> void:
-	short_attack_hitbox.visible = false
+	short_attack_hitbox.disabled = true	
+
 func _process(delta: float) -> void:
 	update_player_state(delta)
+	
 # checks for player inputs and runs the proper action based on result 
 func update_player_state(delta):
 	if !freeze_player:
@@ -55,25 +58,30 @@ func player_attack():
 	match current_direction:
 		direction.UP, direction.UP_RIGHT, direction.UP_LEFT:
 			player_sprite.play("attack_up")
-			short_attack_hitbox.position = Vector2(0,-20)
+			short_attack_hitbox.rotation_degrees = 90
+			short_attack_hitbox.position = Vector2(0,-16.875)
 		direction.DOWN, direction.DOWN_RIGHT, direction.DOWN_LEFT:
 			player_sprite.play("attack_down")
-			short_attack_hitbox.position = Vector2(0,20)
+			short_attack_hitbox.rotation_degrees = 90
+			short_attack_hitbox.position = Vector2(0,6)
 		direction.LEFT:
 			player_sprite.play("attack_left")
-			short_attack_hitbox.position = Vector2(-21,0)
+			short_attack_hitbox.rotation = 0
+			short_attack_hitbox.position = Vector2(-10.5,-5.125)
 		direction.RIGHT:
 			player_sprite.play("attack_right")
-			short_attack_hitbox.position = Vector2(22,0)
+			short_attack_hitbox.rotation = 0
+			short_attack_hitbox.position = Vector2(10.5,-5.125)
 	
-	short_attack_hitbox.visible = true
-	attack_timer.start(.45)
+	short_attack_hitbox.disabled = false
+	attack_timer.start(.35)
 	$short_attack_Area2D/slice.play()
 	freeze_player = true
 
 func _on_attack_timer_timeout() -> void:
-	short_attack_hitbox.visible = false
+	short_attack_hitbox.disabled = true
 	freeze_player = false
+
 # handles player movement    
 func player_movement(delta):
 	velocity = Vector2.ZERO
@@ -97,7 +105,7 @@ func player_movement(delta):
 	if  dir_keys_pressed > 2:
 		velocity = Vector2.ZERO
 		player_sprite.frame = 0
-	move_and_collide(velocity * delta)
+	move_and_slide()
 
 # sets player walk animation
 func player_walk_animation():
