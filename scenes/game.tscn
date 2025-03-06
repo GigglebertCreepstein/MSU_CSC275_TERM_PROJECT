@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=4 uid="uid://c8u04hmuo5831"]
 
 [ext_resource type="Texture2D" uid="uid://b72we0ty7tg3o" path="res://assets/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png" id="1_34elp"]
+[ext_resource type="Script" uid="uid://yhrye3d7tahq" path="res://scenes/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bdb41aisf0bvp" path="res://scenes/trad_player.tscn" id="2_uhngc"]
-[ext_resource type="PackedScene" uid="uid://g636wece0tif" path="res://scenes/enemy.tscn" id="3_lnu2h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ktn1"]
 texture = ExtResource("1_34elp")
@@ -266,6 +266,7 @@ physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_5ktn1")
 
 [node name="game" type="Node2D"]
+script = ExtResource("1_lbhrr")
 
 [node name="Area2D" type="Area2D" parent="."]
 position = Vector2(128, 32)
@@ -286,25 +287,16 @@ tile_set = SubResource("TileSet_nsyun")
 [node name="player" parent="." instance=ExtResource("2_uhngc")]
 position = Vector2(398, 219)
 
-[node name="enemies" type="Node" parent="."]
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="enemy" parent="enemies" instance=ExtResource("3_lnu2h")]
-position = Vector2(220, 159)
-
-[node name="enemy2" parent="enemies" instance=ExtResource("3_lnu2h")]
-position = Vector2(207, 347)
-
-[node name="enemy3" parent="enemies" instance=ExtResource("3_lnu2h")]
-position = Vector2(602, 350)
-
-[node name="enemy4" parent="enemies" instance=ExtResource("3_lnu2h")]
-position = Vector2(572, 194)
-
-[node name="enemy5" parent="enemies" instance=ExtResource("3_lnu2h")]
-position = Vector2(398, 344)
-
-[node name="enemy6" parent="enemies" instance=ExtResource("3_lnu2h")]
-position = Vector2(605, 206)
-
-[node name="enemy7" parent="enemies" instance=ExtResource("3_lnu2h")]
-position = Vector2(626, 240)
+[node name="score_label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 98.0
+offset_top = 16.0
+offset_right = 138.0
+offset_bottom = 39.0
+text = "Score:"

@@ -1,14 +1,18 @@
 extends CharacterBody2D
 ##################NODE REFERENCES##########
+
 @onready var slice: AudioStreamPlayer = $"short_attack_Area2D/Retro-hurt-1-236672(1)"
 @onready var player_sprite: AnimatedSprite2D = $player_sprite
 @onready var short_attack_hitbox: CollisionShape2D = $short_attack_Area2D/short_attack_collider
 @onready var attack_timer: Timer = $short_attack_Area2D/attack_timer
+
 ##################GLOBAL VARIABLES#########
+
 @export var speed = 200
 var freeze_player = false
 enum direction { LEFT, RIGHT, UP, DOWN, UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT}
 var current_direction = direction.DOWN
+
 ###########################################
 
 func _ready() -> void:
@@ -31,7 +35,7 @@ func update_player_state(delta):
 	# if no input is being recieved, sets player animation to face most recent direction
 	
 
-##################################PLAYER STATES################################
+##################PLAYER STATES################################
 
 # updates the enum current_direction based on player input
 func get_player_direction():
