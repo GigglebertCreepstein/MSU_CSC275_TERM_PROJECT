@@ -3,7 +3,7 @@ extends CharacterBody2D
 
 @onready var slice: AudioStreamPlayer = $"short_attack_Area2D/Retro-hurt-1-236672(1)"
 @onready var player_sprite: AnimatedSprite2D = $player_sprite
-@onready var short_attack_hitbox: CollisionShape2D = $short_attack_Area2D/short_attack_collider
+@onready var short_attack_hitbox: CollisionShape2D = $short_attack_Area2D/short_attack_hitbox
 @onready var attack_timer: Timer = $short_attack_Area2D/attack_timer
 
 ##################GLOBAL VARIABLES#########
@@ -12,14 +12,20 @@ extends CharacterBody2D
 var freeze_player = false
 enum direction { LEFT, RIGHT, UP, DOWN, UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT}
 var current_direction = direction.DOWN
-
+var player_is_alive = true
 ###########################################
 
-func _ready() -> void:
-	short_attack_hitbox.disabled = true	
 
+func _ready() -> void:
+	#short_attack_hitbox.disabled = true	
+	short_attack_hitbox.disabled = true
+	
 func _process(delta: float) -> void:
-	update_player_state(delta)
+	if player_is_alive:
+		update_player_state(delta)
+	elif Input.is_action_just_pressed("reset player"):
+		position = get_global_mouse_position()
+		player_is_alive = true
 	
 # checks for player inputs and runs the proper action based on result 
 func update_player_state(delta):
@@ -158,3 +164,12 @@ func player_idle():
 		player_sprite.play(animation_name)
 	# CHANGED: Set the frame to 0 to stay on the first frame instead of stopping the animation
 	player_sprite.frame = 0
+
+
+
+
+
+func _on_death_collision_area_entered(area: Area2D) -> void:
+	print("death collision triggered")
+	player_sprite.play("death")
+	player_is_alive = false

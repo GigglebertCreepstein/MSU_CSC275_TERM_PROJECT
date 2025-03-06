@@ -1,8 +1,12 @@
 [gd_scene load_steps=17 format=3 uid="uid://g636wece0tif"]
 
-[ext_resource type="Script" uid="uid://brxqkemserjgq" path="res://enemy.gd" id="1_4gyqm"]
+[ext_resource type="Script" uid="uid://brxqkemserjgq" path="res://scripts/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://cl4yv5rcp4md6" path="res://assets/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Enemies_Sprites/Pinkslime_Sprites/pinkslime_hit_anim_all_dir_strip_4.png" id="2_4ra3w"]
 [ext_resource type="Texture2D" uid="uid://bp2ymc3b5coy" path="res://assets/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Enemies_Sprites/Pinkslime_Sprites/pinkslime_idle_anim_all_dir_strip_6.png" id="3_5uy6h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4ra3w"]
+radius = 5.24098
+height = 11.6349
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
 atlas = ExtResource("2_4ra3w")
@@ -87,9 +91,6 @@ animations = [{
 "speed": 17.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_md0e3"]
-size = Vector2(14, 15)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e1ltt"]
 size = Vector2(14, 12)
 
@@ -98,30 +99,41 @@ collision_layer = 4
 collision_mask = 3
 script = ExtResource("1_4gyqm")
 
+[node name="wall_collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+scale = Vector2(1.90804, -1.54706)
+shape = SubResource("CapsuleShape2D_4ra3w")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hb8ge")
-animation = &"death"
-frame_progress = 0.932517
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
-scale = Vector2(2, 2)
-shape = SubResource("RectangleShape2D_md0e3")
+animation = &"idle"
+frame_progress = 0.0243143
 
 [node name="hitbox" type="Area2D" parent="."]
+visible = false
 scale = Vector2(2, 2)
 collision_layer = 4
 collision_mask = 2
 
 [node name="hitbox_collision" type="CollisionShape2D" parent="hitbox"]
-position = Vector2(0, -2)
+position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_e1ltt")
 
 [node name="death_timer" type="Timer" parent="hitbox"]
 
 [node name="movement_timer" type="Timer" parent="."]
 
+[node name="attack_collision" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
+
+[node name="attack_shape" type="CollisionShape2D" parent="attack_collision"]
+position = Vector2(0, -1)
+scale = Vector2(1.90804, -1.54706)
+shape = SubResource("CapsuleShape2D_4ra3w")
+
 [connection signal="area_entered" from="hitbox" to="." method="enemy_death"]
 [connection signal="timeout" from="hitbox/death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="movement_timer" to="." method="_on_movement_timer_timeout"]
+[connection signal="area_entered" from="attack_collision" to="." method="_on_attack_collision_area_entered"]

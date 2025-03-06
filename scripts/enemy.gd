@@ -5,6 +5,9 @@ extends CharacterBody2D
 @onready var death_timer: Timer = $hitbox/death_timer
 @onready var hitbox_collision: CollisionShape2D = $hitbox/hitbox_collision
 @onready var movement_timer: Timer = $movement_timer
+@onready var attack_collision: Area2D = $attack_collision
+
+
 var just_moved = false
 ##########################################################################
 func _ready() -> void:
@@ -12,12 +15,16 @@ func _ready() -> void:
 	movement_timer.start(.5)
 
 func _process(delta: float) -> void:
-	move_and_slide()
+	
+	move_and_collide(velocity * delta)
 ###########################################################################
 
 func enemy_death(area: Area2D) -> void:
+	velocity = Vector2.ZERO
+	attack_collision.remove_child($attack_collision/attack_shape)
 	animated_sprite_2d.play("death")
 	death_timer.start(.4)
+	print("enemy hitbox triggered")
 
 func _on_death_timer_timeout() -> void:
 	queue_free()
@@ -32,3 +39,10 @@ func _on_movement_timer_timeout() -> void:
 	else:
 		just_moved = false
 		velocity = Vector2.ZERO
+
+
+
+
+
+func _on_attack_collision_area_entered(area: Area2D) -> void:
+	print("attack collision triggered")
