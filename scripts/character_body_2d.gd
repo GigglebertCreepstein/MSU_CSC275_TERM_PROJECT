@@ -1,32 +1,27 @@
 extends CharacterBody2D
 ##################NODE REFERENCES##########
-
 @onready var slice: AudioStreamPlayer = $"short_attack_Area2D/Retro-hurt-1-236672(1)"
 @onready var player_sprite: AnimatedSprite2D = $player_sprite
 @onready var short_attack_hitbox: CollisionShape2D = $short_attack_Area2D/short_attack_hitbox
 @onready var attack_timer: Timer = $short_attack_Area2D/attack_timer
-
 ##################GLOBAL VARIABLES#########
-
 @export var speed = 200
 var freeze_player = false
 enum direction { LEFT, RIGHT, UP, DOWN, UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT}
 var current_direction = direction.DOWN
 var player_is_alive = true
 ###########################################
-
-
 func _ready() -> void:
 	#short_attack_hitbox.disabled = true	
 	short_attack_hitbox.disabled = true
-	
+
 func _process(delta: float) -> void:
 	if player_is_alive:
 		update_player_state(delta)
 	elif Input.is_action_just_pressed("reset player"):
 		position = get_global_mouse_position()
 		player_is_alive = true
-	
+
 # checks for player inputs and runs the proper action based on result 
 func update_player_state(delta):
 	if !freeze_player:
@@ -38,8 +33,7 @@ func update_player_state(delta):
 			player_movement(delta)
 		else:
 			player_idle()
-	# if no input is being recieved, sets player animation to face most recent direction
-	
+	# if no input is being recieved, sets player animation to face most recent direction	
 
 ##################PLAYER STATES################################
 
@@ -108,10 +102,9 @@ func player_movement(delta):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 		dir_keys_pressed += 1
+	
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
-	
-
 	if  dir_keys_pressed > 2:
 		velocity = Vector2.ZERO
 		player_sprite.frame = 0
@@ -119,6 +112,7 @@ func player_movement(delta):
 
 # sets player walk animation
 func player_walk_animation():
+	#TODO: This could be rewritten to be less messy
 	player_sprite.speed_scale = 1
 	if Input.is_action_pressed("move_left"):
 		if Input.is_action_pressed("move_up"):
@@ -164,10 +158,6 @@ func player_idle():
 		player_sprite.play(animation_name)
 	# CHANGED: Set the frame to 0 to stay on the first frame instead of stopping the animation
 	player_sprite.frame = 0
-
-
-
-
 
 func _on_death_collision_area_entered(area: Area2D) -> void:
 	print("death collision triggered")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ca3ei1l26mnxu"
-path="res://.godot/imported/RPG Maker XP Character Walk.png-b48bb83bfeeec9edd5af8c4c9fc8e191.ctex"
+uid="uid://bd7qve5rf6u3f"
+path="res://.godot/imported/Swing-Sheet.png-46dfe3403eb9124e1f56accd6d3ad2f5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/RPG Maker XP Character Walk.png"
-dest_files=["res://.godot/imported/RPG Maker XP Character Walk.png-b48bb83bfeeec9edd5af8c4c9fc8e191.ctex"]
+source_file="res://assets/donald/Swing-Sheet.png"
+dest_files=["res://.godot/imported/Swing-Sheet.png-46dfe3403eb9124e1f56accd6d3ad2f5.ctex"]
 
 [params]
 
