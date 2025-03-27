@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://c8u04hmuo5831"]
+[gd_scene load_steps=7 format=4 uid="uid://c8u04hmuo5831"]
 
 [ext_resource type="Texture2D" uid="uid://b72we0ty7tg3o" path="res://assets/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Dungeon_Tileset.png" id="1_34elp"]
 [ext_resource type="Script" uid="uid://yhrye3d7tahq" path="res://scripts/game.gd" id="1_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://bdb41aisf0bvp" path="res://scenes/trad_player.tscn" id="2_uhngc"]
-[ext_resource type="PackedScene" uid="uid://ihlplcqwo6h1" path="res://scenes/donald.tscn" id="4_iywne"]
 [ext_resource type="PackedScene" uid="uid://c6eaa64ffkkyt" path="res://scenes/villager.tscn" id="4_lbhrr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5ktn1"]
@@ -289,11 +288,6 @@ tile_set = SubResource("TileSet_nsyun")
 
 [node name="player" parent="." instance=ExtResource("2_uhngc")]
 position = Vector2(398, 219)
-
-[node name="donald" parent="." instance=ExtResource("4_iywne")]
-visible = false
-position = Vector2(361, 205)
-scale = Vector2(0.5, 0.5)
 
 [node name="villager" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(496, 215)

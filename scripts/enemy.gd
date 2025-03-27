@@ -1,4 +1,5 @@
 extends CharacterBody2D
+signal increase_score(score_val)
 #####GLOBAL VARIABLES#####################################################
 @onready var collision_shape_2d: CollisionShape2D = $CollisionShape2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -6,6 +7,7 @@ extends CharacterBody2D
 @onready var hitbox_collision: CollisionShape2D = $hitbox/hitbox_collision
 @onready var movement_timer: Timer = $movement_timer
 @onready var attack_collision: Area2D = $attack_collision
+@onready var enemy_score_value = 100
 var just_moved = false
 ##########################################################################
 func _ready() -> void:
@@ -21,6 +23,7 @@ func enemy_death(area: Area2D) -> void:
 	attack_collision.remove_child($attack_collision/attack_shape)
 	animated_sprite_2d.play("death")
 	death_timer.start(.4)
+	increase_score.emit(enemy_score_value)
 
 func _on_death_timer_timeout() -> void:
 	queue_free()
