@@ -1,0 +1,14 @@
+extends Node
+signal update_score_HUD(score)
+signal update_mult_HUD(mult)
+var score = 0
+var multiplier = 1.0
+
+func update_score(enemy_score_value):
+	score = score + (enemy_score_value * multiplier)
+	update_score_HUD.emit(score)
+	
+	
+func update_mult(villager_mult_value):
+	multiplier += villager_mult_value
+	update_mult_HUD.emit(multiplier)
