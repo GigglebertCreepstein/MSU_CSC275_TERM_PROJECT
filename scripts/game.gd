@@ -1,7 +1,7 @@
 extends Node2D
 var enemy = preload("res://scenes/enemy.tscn")
-@onready var score_label: Label = $Control/score_label
 
+@onready var score_label: Label = $Control/score_label
 
 func _process(delta: float) -> void:
 	# !!!!TESTING FEATURE!!!! - left click to spawn in basic enemy at mouse coordinates
