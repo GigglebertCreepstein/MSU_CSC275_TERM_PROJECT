@@ -10,7 +10,6 @@ func _ready() -> void:
 
 func update_score_label(score_val):
 	score_label.text = "Score: " + str(score_val)
-	print("update score trigggered (HUD)")
 
 func update_mult_label(mult_val):
 	mult_label.text = "Multiplier: " + str(mult_val)

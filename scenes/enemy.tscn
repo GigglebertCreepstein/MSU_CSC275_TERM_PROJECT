@@ -108,7 +108,6 @@ shape = SubResource("CapsuleShape2D_4ra3w")
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_hb8ge")
 animation = &"idle"
-frame_progress = 0.0243143
 
 [node name="hitbox" type="Area2D" parent="."]
 visible = false

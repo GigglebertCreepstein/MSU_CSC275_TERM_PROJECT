@@ -39,5 +39,6 @@ func _on_movement_timer_timeout() -> void:
 		just_moved = false
 		velocity = Vector2.ZERO
 
+#TODO: I don't think this is being used for anything. Investigate whether or not this can be taken out.
 func _on_attack_collision_area_entered(area: Area2D) -> void:
-	print("attack collision triggered")
+	pass
