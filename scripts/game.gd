@@ -1,8 +1,8 @@
 extends Node2D
 
-@export var enemy_scene: PackedScene
-@export var villager_scene: PackedScene
-@export var spawn_area: Rect2 #adjust spawn area of mobs
+@export var enemy_scene: PackedScene = preload("res://scenes/enemy.tscn")
+@export var villager_scene: PackedScene = preload("res://scenes/villager.tscn")
+@export var spawn_area: Rect2 = Rect2(96, 128, 672, 256) #adjust spawn area of mobs
 
 var base_spawn_rate: float = 3.0 # Base enemy spawn rate
 var current_spawn_rate: float = base_spawn_rate 
