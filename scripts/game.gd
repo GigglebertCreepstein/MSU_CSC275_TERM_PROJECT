@@ -3,7 +3,7 @@ extends Node2D
 @export var enemy_scene: PackedScene = preload("res://scenes/enemy.tscn")
 @export var villager_scene: PackedScene = preload("res://scenes/villager.tscn")
 @export var spawn_area: Rect2 = Rect2(96, 128, 672, 256) #adjust spawn area of mobs
-
+@export var spawn_aggresion = .2
 var base_spawn_rate: float = 3.0 # Base enemy spawn rate
 var current_spawn_rate: float = base_spawn_rate 
 var villager_spawn_rate: float = 5.0  # Fixed 5-second interval for villagers
@@ -49,7 +49,7 @@ func _random_spawn_position() -> Vector2:
 
 func _update_hud(multiplier: float):
 	# Only adjust enemy spawn rate
-	current_spawn_rate = base_spawn_rate / (1.0 + multiplier * 0.2)
+	current_spawn_rate = base_spawn_rate / (1.0 + multiplier * spawn_aggresion)
 	# 0.2: A tuning factor controlling how aggressively the spawn rate speeds up. (Higher values = spawn rate decreases faster.)
 	enemy_timer.wait_time = current_spawn_rate
 	enemy_timer.start()

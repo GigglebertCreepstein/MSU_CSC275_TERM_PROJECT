@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fi5gtjkuuj8t"
-path="res://.godot/imported/Walk_right-Sheet.png-a82b57637d1528c972ab7f342b03efc2.ctex"
+uid="uid://cpoecd3atkrr7"
+path="res://.godot/imported/Slime-Sheet.png-a53b3a44275edf5a788ca2cc8c36c779.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/donald/Walk_right-Sheet.png"
-dest_files=["res://.godot/imported/Walk_right-Sheet.png-a82b57637d1528c972ab7f342b03efc2.ctex"]
+source_file="res://assets/team_assets/slime/Slime-Sheet.png"
+dest_files=["res://.godot/imported/Slime-Sheet.png-a53b3a44275edf5a788ca2cc8c36c779.ctex"]
 
 [params]
 

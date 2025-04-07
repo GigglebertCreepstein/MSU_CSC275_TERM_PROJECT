@@ -10,17 +10,17 @@ extends CharacterBody2D
 var just_moved = false
 ##########################################################################
 func _ready() -> void:
-	animated_sprite_2d.play("idle")
+	animated_sprite_2d.play("slime_idle")
 	movement_timer.start(.5)
 
 func _process(delta: float) -> void:
 	move_and_collide(velocity * delta)
 ###########################################################################
 
-func enemy_death(area: Area2D) -> void:
+func enemy_death(_area: Area2D) -> void:
 	velocity = Vector2.ZERO
 	attack_collision.remove_child($attack_collision/attack_shape)
-	animated_sprite_2d.play("death")
+	animated_sprite_2d.play("slime_death")
 	death_timer.start(.4)
 	GameManager.update_score(enemy_score_value)
 
@@ -38,7 +38,3 @@ func _on_movement_timer_timeout() -> void:
 	else:
 		just_moved = false
 		velocity = Vector2.ZERO
-
-#TODO: I don't think this is being used for anything. Investigate whether or not this can be taken out.
-func _on_attack_collision_area_entered(area: Area2D) -> void:
-	pass

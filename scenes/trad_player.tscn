@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://btd2wy0uadikr" path="res://assets/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Char_Sprites/char_spritesheet.png" id="4_gsvua"]
 [ext_resource type="Texture2D" uid="uid://dp0vpsxfyt7hu" path="res://assets/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Char_Sprites/char_run_right_anim_strip_6.png" id="4_xncya"]
 [ext_resource type="Texture2D" uid="uid://bqk2m2aclp7lb" path="res://assets/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Char_Sprites/char_pushing_up_anim_strip_6.png" id="5_28n11"]
-[ext_resource type="AudioStream" uid="uid://c2jx6yo4qskwg" path="res://assets/retro-hurt-1-236672(1).mp3" id="7_jvrhg"]
+[ext_resource type="AudioStream" uid="uid://c2jx6yo4qskwg" path="res://assets/sound/retro-hurt-1-236672(1).mp3" id="7_jvrhg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m2ttk"]
 atlas = ExtResource("2_6d7i0")

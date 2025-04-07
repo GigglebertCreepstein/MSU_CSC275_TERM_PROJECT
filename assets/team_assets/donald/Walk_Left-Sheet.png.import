@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dmqii2njucgrr"
-path="res://.godot/imported/Walk_Left-Sheet.png-63f408d4c00277e1ad51855aa361949a.ctex"
+path="res://.godot/imported/Walk_Left-Sheet.png-572ba9f56330c3d5cfabcd357ee609ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Walk_Left-Sheet.png"
-dest_files=["res://.godot/imported/Walk_Left-Sheet.png-63f408d4c00277e1ad51855aa361949a.ctex"]
+source_file="res://assets/team_assets/donald/Walk_Left-Sheet.png"
+dest_files=["res://.godot/imported/Walk_Left-Sheet.png-572ba9f56330c3d5cfabcd357ee609ee.ctex"]
 
 [params]
 

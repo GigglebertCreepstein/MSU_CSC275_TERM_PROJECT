@@ -4,7 +4,6 @@ extends Control
 @onready var mult_label: Label = $mult_label
 ###########################
 func _ready() -> void:
-	var connected = GameManager.update_score_HUD.connect(update_score_label)
 	GameManager.update_score_HUD.connect(update_score_label)
 	GameManager.update_mult_HUD.connect(update_mult_label)
 
