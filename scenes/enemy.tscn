@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://g636wece0tif"]
+[gd_scene load_steps=45 format=3 uid="uid://g636wece0tif"]
 
 [ext_resource type="Script" uid="uid://brxqkemserjgq" path="res://scripts/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://cl4yv5rcp4md6" path="res://assets/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Enemies_Sprites/Pinkslime_Sprites/pinkslime_hit_anim_all_dir_strip_4.png" id="2_4ra3w"]
@@ -87,21 +87,21 @@ region = Rect2(768, 0, 96, 96)
 atlas = ExtResource("4_xwavj")
 region = Rect2(864, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i4rgx"]
-atlas = ExtResource("5_nenq2")
-region = Rect2(0, 0, 96, 96)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_2mchx"]
 atlas = ExtResource("5_nenq2")
 region = Rect2(96, 0, 96, 96)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_t3vcr"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_i4rgx"]
 atlas = ExtResource("5_nenq2")
-region = Rect2(192, 0, 96, 96)
+region = Rect2(0, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qaulx"]
 atlas = ExtResource("5_nenq2")
 region = Rect2(288, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t3vcr"]
+atlas = ExtResource("5_nenq2")
+region = Rect2(192, 0, 96, 96)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1f82d"]
 atlas = ExtResource("5_nenq2")
@@ -146,14 +146,6 @@ region = Rect2(384, 0, 96, 96)
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tuss"]
 atlas = ExtResource("6_md484")
 region = Rect2(480, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7v6cf"]
-atlas = ExtResource("6_md484")
-region = Rect2(576, 0, 96, 96)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vab5u"]
-atlas = ExtResource("6_md484")
-region = Rect2(672, 0, 96, 96)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_hb8ge"]
 animations = [{
@@ -228,22 +220,22 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_wjec0")
 }],
-"loop": true,
+"loop": false,
 "name": &"slime_death",
 "speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i4rgx")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_2mchx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_t3vcr")
+"texture": SubResource("AtlasTexture_i4rgx")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_qaulx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t3vcr")
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1f82d")
@@ -282,16 +274,10 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2tuss")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7v6cf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vab5u")
 }],
-"loop": true,
+"loop": false,
 "name": &"slime_spawn",
-"speed": 3.5
+"speed": 3.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiusc"]
@@ -303,28 +289,27 @@ height = 73.1616
 
 [node name="enemy" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 3
 script = ExtResource("1_4gyqm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-16, -1)
 sprite_frames = SubResource("SpriteFrames_hb8ge")
-animation = &"slime_idle"
-frame = 8
-frame_progress = 0.587773
+animation = &"slime_spawn"
+frame_progress = 1.0
 
-[node name="wall_collision" type="CollisionShape2D" parent="."]
+[node name="wall_collision_shape" type="CollisionShape2D" parent="."]
 position = Vector2(-9.86753, -0.996206)
 shape = SubResource("RectangleShape2D_qiusc")
 
 [node name="hitbox" type="Area2D" parent="."]
 collision_layer = 4
-collision_mask = 2
+collision_mask = 8
 
 [node name="hitbox_collision" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(-10, -7)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5ie7m")
+disabled = true
 
 [node name="death_timer" type="Timer" parent="hitbox"]
 
@@ -333,15 +318,19 @@ shape = SubResource("CapsuleShape2D_5ie7m")
 [node name="attack_collision" type="Area2D" parent="."]
 scale = Vector2(0.5, 0.5)
 collision_layer = 16
-collision_mask = 8
+collision_mask = 66
 
 [node name="attack_shape" type="CollisionShape2D" parent="attack_collision"]
 position = Vector2(-20, -14)
 rotation = 1.5708
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_5ie7m")
+disabled = true
+
+[node name="spawn_timer" type="Timer" parent="."]
 
 [connection signal="area_entered" from="hitbox" to="." method="enemy_death"]
 [connection signal="timeout" from="hitbox/death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="movement_timer" to="." method="_on_movement_timer_timeout"]
 [connection signal="area_entered" from="attack_collision" to="." method="_on_attack_collision_area_entered"]
+[connection signal="timeout" from="spawn_timer" to="." method="_on_spawn_timer_timeout"]

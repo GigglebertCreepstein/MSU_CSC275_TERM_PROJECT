@@ -24,9 +24,10 @@ GameManager="*res://scripts/game_manager.gd"
 
 [display]
 
-window/size/viewport_width=1920
-window/size/viewport_height=1080
+window/size/viewport_width=1536
+window/size/viewport_height=864
 window/stretch/mode="canvas_items"
+window/stretch/scale=0.8
 
 [editor]
 
@@ -85,8 +86,10 @@ grab-throw={
 2d_physics/layer_1="world"
 2d_physics/layer_2="player"
 2d_physics/layer_3="enemy"
-2d_physics/layer_4="player_health"
-2d_physics/layer_5="enemy_attack"
+2d_physics/layer_4="player attack"
+2d_physics/layer_5="enemy attack"
+2d_physics/layer_6="pickups"
+2d_physics/layer_7="health"
 
 [rendering]
 

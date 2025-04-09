@@ -1,6 +1,7 @@
-[gd_scene load_steps=50 format=3 uid="uid://c6eaa64ffkkyt"]
+[gd_scene load_steps=38 format=3 uid="uid://c6eaa64ffkkyt"]
 
 [ext_resource type="Script" uid="uid://d16j6vlwisuqv" path="res://scripts/villager.gd" id="1_bjpa3"]
+[ext_resource type="AudioStream" uid="uid://np2cnmiypbob" path="res://assets/sound/516827__mrthenoronha__get-item-1-8-bit.wav" id="4_37mdv"]
 [ext_resource type="Texture2D" uid="uid://bqtp5dge8u4wk" path="res://assets/team_assets/villager/villager_idle.png" id="5_6eh0s"]
 [ext_resource type="Texture2D" uid="uid://p0sx2ii8j8bk" path="res://assets/team_assets/villager/villager_saved-Sheet.png" id="6_a0ief"]
 
@@ -79,58 +80,6 @@ region = Rect2(504, 0, 72, 72)
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvn88"]
 atlas = ExtResource("6_a0ief")
 region = Rect2(576, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s5vbf"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(648, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_3cyk3"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(720, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vbrmq"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(792, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_435jc"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(864, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nlfb8"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(936, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_k76bw"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(1008, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6odnq"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(1080, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t5bx5"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(1152, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_8x3vc"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(1224, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0y7ir"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(1296, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ygi2"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(1368, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_l3yp0"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(1440, 0, 72, 72)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y31kd"]
-atlas = ExtResource("6_a0ief")
-region = Rect2(1512, 0, 72, 72)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7wmkk"]
 atlas = ExtResource("6_a0ief")
@@ -246,50 +195,11 @@ animations = [{
 "texture": SubResource("AtlasTexture_mvn88")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_s5vbf")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_3cyk3")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vbrmq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_435jc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_nlfb8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_k76bw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_6odnq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t5bx5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_8x3vc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_0y7ir")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1ygi2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l3yp0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_y31kd")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_7wmkk")
 }],
 "loop": false,
 "name": &"villager_saved",
-"speed": 17.0
+"speed": 15.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -336,6 +246,7 @@ height = 56.0
 
 [node name="villager" type="Area2D"]
 scale = Vector2(1.7, 1.7)
+collision_layer = 32
 collision_mask = 2
 script = ExtResource("1_bjpa3")
 
@@ -343,6 +254,8 @@ script = ExtResource("1_bjpa3")
 position = Vector2(0, -3)
 sprite_frames = SubResource("SpriteFrames_a0ief")
 animation = &"villager_spawn"
+frame = 10
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -2)
@@ -351,6 +264,10 @@ shape = SubResource("CapsuleShape2D_hotao")
 [node name="collection_timer" type="Timer" parent="."]
 
 [node name="spawn_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_37mdv")
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

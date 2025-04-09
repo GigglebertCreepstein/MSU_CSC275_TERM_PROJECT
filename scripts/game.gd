@@ -6,7 +6,7 @@ extends Node2D
 @export var spawn_aggresion = .2
 var base_spawn_rate: float = 3.0 # Base enemy spawn rate
 var current_spawn_rate: float = base_spawn_rate 
-var villager_spawn_rate: float = 5.0  # Fixed 5-second interval for villagers
+@export var villager_spawn_rate: float = 5.0  # Fixed 5-second interval for villagers
 var enemy_timer: Timer
 var villager_timer: Timer
 
