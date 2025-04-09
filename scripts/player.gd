@@ -159,6 +159,5 @@ func player_idle():
 	player_sprite.frame = 0
 
 func _on_death_collision_area_entered(_area: Area2D) -> void:
-	print("death collision triggered")
 	player_sprite.play("death")
 	player_is_alive = false

@@ -1,56 +1,72 @@
 extends CharacterBody2D
-#####GLOBAL VARIABLES#####################################################
 
+##### GLOBAL VARIABLES #####################################################
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var death_timer: Timer = $hitbox/death_timer
 @onready var hitbox_collision: CollisionShape2D = $hitbox/hitbox_collision
 @onready var movement_timer: Timer = $movement_timer
 @onready var attack_collision: Area2D = $attack_collision
+@onready var attack_shape = $attack_collision/attack_shape
 @export var enemy_score_value = 100
+@export var move_speed: float = 50.0
+var is_dead = false
 var just_moved = false
+var enemy_spawned = false
 ##########################################################################
+
 func _ready() -> void:
 	animated_sprite_2d.play("slime_spawn")
-	$spawn_timer.start()
+	$spawn_timer.start(1)
 
-func _on_spawn_timer_timeout() -> void:
+func _on_spawn_timer_timeout():
+	
 	animated_sprite_2d.play("slime_idle")
-	if is_instance_valid(hitbox_collision):
+	if hitbox_collision:
 		hitbox_collision.disabled = false
-	if is_instance_valid($attack_collision/attack_shape):	
-		$attack_collision/attack_shape.disabled = false
+	if attack_shape:
+		attack_shape.disabled = false
 	movement_timer.start(.5)
-
+	enemy_spawned = true
 
 func _process(delta: float) -> void:
-	move_and_collide(velocity * delta)
+	if enemy_spawned:
+		move_and_collide(velocity * delta)
+
 ###########################################################################
 
+# Handles enemy death sequence
 func enemy_death(_area: Area2D) -> void:
+	if is_dead: return
+	is_dead = true
+
 	velocity = Vector2.ZERO
-	var hitbox_shape = get_node_or_null("hitbox/hitbox_collision")
-	if hitbox_shape:
-		hitbox_shape.queue_free()
-	var wall_shape = get_node_or_null("wall_collision/wall_collision_shape")
-	if wall_shape:
-			wall_shape.queue_free()
-	var attack_shape = get_node_or_null("attack_collision/attack_shape")
-	if attack_shape:
-		attack_shape.queue_free()
 	animated_sprite_2d.play("slime_death")
-	death_timer.start(.7)
+
+	movement_timer.stop()
+	set_physics_process(false)
+	set_process(false)
+
+	# Disconnect the spawn timer signal to prevent duplicate triggers
+	if $spawn_timer.timeout.is_connected(_on_spawn_timer_timeout):
+		$spawn_timer.timeout.disconnect(_on_spawn_timer_timeout) ### NEW
+
+	for path in ["hitbox/hitbox_collision", "wall_collision/wall_collision_shape", "attack_collision/attack_shape"]:
+		var node = get_node_or_null(path)
+		if node:
+			node.set_deferred("disabled", true)
+
+	death_timer.start(1.3)
 	GameManager.update_score(enemy_score_value)
+
 
 func _on_death_timer_timeout() -> void:
 	queue_free()
 
-# updates enemy movement. either moves random direction or stays stationary
+# Updates enemy movement. Either moves in a random direction or stays stationary
 func _on_movement_timer_timeout() -> void:
-	#TODO: try to reduce unnecesary checks
 	if randi_range(0,1) == 0 and just_moved == false:
-		velocity = Vector2(randf_range(-50,50),randf_range(-50,50))
-		if velocity.length() > 1:
-			velocity.normalized()	
+		# Move in a normalized random direction multiplied by move_speed
+		velocity = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized() * move_speed
 		just_moved = true
 	else:
 		just_moved = false
