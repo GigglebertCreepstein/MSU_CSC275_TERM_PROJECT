@@ -89,7 +89,8 @@ grab-throw={
 2d_physics/layer_4="player attack"
 2d_physics/layer_5="enemy attack"
 2d_physics/layer_6="pickups"
-2d_physics/layer_7="health"
+2d_physics/layer_7="player_health"
+2d_physics/layer_8="enemy_health"
 
 [rendering]
 

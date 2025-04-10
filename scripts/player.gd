@@ -8,22 +8,18 @@ extends CharacterBody2D
 var freeze_player = false
 enum direction { LEFT, RIGHT, UP, DOWN, UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT}
 var current_direction = direction.DOWN
-var player_is_alive = true
+var is_alive = true
 ###########################################
 func _ready() -> void:
 	#short_attack_hitbox.disabled = true	
 	short_attack_hitbox.disabled = true
 
 func _process(_delta: float) -> void:
-	if player_is_alive:
-		update_player_state()
-	elif Input.is_action_just_pressed("reset player"):
-		position = get_global_mouse_position()
-		player_is_alive = true
+	update_player_state()
 
 # checks for player inputs and runs the proper action based on result 
 func update_player_state():
-	if !freeze_player:
+	if !freeze_player and is_alive:
 		get_player_direction()
 		if Input.is_action_just_pressed("attack"):
 			player_attack()
@@ -62,19 +58,19 @@ func player_attack():
 		direction.UP, direction.UP_RIGHT, direction.UP_LEFT:
 			player_sprite.play("attack_up")
 			short_attack_hitbox.rotation_degrees = 90
-			short_attack_hitbox.position = Vector2(0,-16.875)
+			short_attack_hitbox.position = Vector2(0,-28)
 		direction.DOWN, direction.DOWN_RIGHT, direction.DOWN_LEFT:
 			player_sprite.play("attack_down")
 			short_attack_hitbox.rotation_degrees = 90
-			short_attack_hitbox.position = Vector2(0,6)
+			short_attack_hitbox.position = Vector2(0,27)
 		direction.LEFT:
 			player_sprite.play("attack_left")
 			short_attack_hitbox.rotation = 0
-			short_attack_hitbox.position = Vector2(-10.5,-5.125)
+			short_attack_hitbox.position = Vector2(-29,5)
 		direction.RIGHT:
 			player_sprite.play("attack_right")
 			short_attack_hitbox.rotation = 0
-			short_attack_hitbox.position = Vector2(10.5,-5.125)
+			short_attack_hitbox.position = Vector2(29,5)
 	
 	short_attack_hitbox.disabled = false
 	attack_timer.start(.35)
@@ -159,5 +155,11 @@ func player_idle():
 	player_sprite.frame = 0
 
 func _on_death_collision_area_entered(_area: Area2D) -> void:
-	player_sprite.play("death")
-	player_is_alive = false
+		is_alive = false
+		$"death_collision/406113DaleonfireDead-8Bit".play()
+		$death_collision/CollisionShape2D.set_deferred("disabled","true")
+		$short_attack_Area2D/short_attack_hitbox.set_deferred("disabled","true")
+		print("player death triggered")
+		player_sprite.play("death")
+		await player_sprite.animation_finished
+		GameManager.game_over()	

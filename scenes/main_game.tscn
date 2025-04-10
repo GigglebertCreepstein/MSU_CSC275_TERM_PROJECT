@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c0ta67er71jdm" path="res://scripts/hud.gd" id="4_nqdth"]
 [ext_resource type="FontFile" uid="uid://cufjgh3gelqqk" path="res://assets/old_london/OldLondon.ttf" id="5_5cypo"]
 [ext_resource type="PackedScene" uid="uid://c6eaa64ffkkyt" path="res://scenes/villager.tscn" id="6_o6v7o"]
-[ext_resource type="PackedScene" uid="uid://ihlplcqwo6h1" path="res://scenes/donald.tscn" id="7_wi4c7"]
+[ext_resource type="PackedScene" uid="uid://bdb41aisf0bvp" path="res://scenes/trad_player.tscn" id="7_wi4c7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wpayl"]
 texture = ExtResource("2_70vka")
@@ -675,5 +675,4 @@ position = Vector2(432, 565)
 collision_mask = 3
 
 [node name="player" parent="." instance=ExtResource("7_wi4c7")]
-position = Vector2(926, 601)
-scale = Vector2(1.35, 1.35)
+position = Vector2(739, 578)

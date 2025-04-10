@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d1o3muuconwjo"
-path="res://.godot/imported/just_a_black_square.png-19325e9269fdd5a15c51b9803133e36d.ctex"
+uid="uid://ccb2u62cbkeyw"
+path="res://.godot/imported/DonaldFBWalk.png-2d38ece25a349cbbcf752421cd923287.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/just_a_black_square.png"
-dest_files=["res://.godot/imported/just_a_black_square.png-19325e9269fdd5a15c51b9803133e36d.ctex"]
+source_file="res://assets/team_assets/donald/DonaldFBWalk.png"
+dest_files=["res://.godot/imported/DonaldFBWalk.png-2d38ece25a349cbbcf752421cd923287.ctex"]
 
 [params]
 

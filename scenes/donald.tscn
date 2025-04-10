@@ -847,8 +847,9 @@ script = ExtResource("1_y8853")
 position = Vector2(0, -6.03995)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2t73j")
-animation = &"attack_down"
-frame_progress = 0.317528
+animation = &"death"
+frame = 51
+frame_progress = 1.0
 
 [node name="wall_collision_shape2" type="CollisionShape2D" parent="."]
 position = Vector2(1, -3)
@@ -880,3 +881,4 @@ shape = SubResource("RectangleShape2D_bggmf")
 [connection signal="body_entered" from="short_attack_Area2D" to="." method="_on_short_attack_area_2d_body_entered"]
 [connection signal="timeout" from="short_attack_Area2D/attack_timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="area_entered" from="death_collision" to="." method="_on_death_collision_area_entered"]
+[connection signal="body_entered" from="death_collision" to="." method="_on_death_collision_body_entered"]
