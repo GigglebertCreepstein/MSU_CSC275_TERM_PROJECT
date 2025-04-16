@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://ce4c0jx1g7oqv"
+path="res://.godot/imported/Donalds dungeon Dive Title screen.wav-e6dbff82524df659f61d00d90cd18bd9.sample"
+
+[deps]
+
+source_file="res://assets/Donalds dungeon Dive Title screen.wav"
+dest_files=["res://.godot/imported/Donalds dungeon Dive Title screen.wav-e6dbff82524df659f61d00d90cd18bd9.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

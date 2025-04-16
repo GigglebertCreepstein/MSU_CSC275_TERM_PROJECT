@@ -843,6 +843,7 @@ collision_layer = 2
 collision_mask = 33
 motion_mode = 1
 script = ExtResource("1_vs87m")
+speed = 250
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6.03995)

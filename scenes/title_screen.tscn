@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://q502uycqxpyi" path="res://scripts/title_screen.gd" id="1_s4lrb"]
 [ext_resource type="Texture2D" uid="uid://b5gux3ry3uh3m" path="res://assets/images.jpg" id="2_mgrm8"]
-[ext_resource type="AudioStream" uid="uid://14ilunrv5d1f" path="res://assets/sound/Playboi Carti - Vamp Anthem (OFFICIAL INSTRUMENTAL).mp3" id="3_dc4i4"]
 [ext_resource type="FontFile" uid="uid://cufjgh3gelqqk" path="res://assets/old_london/OldLondon.ttf" id="3_mgrm8"]
+[ext_resource type="AudioStream" uid="uid://ce4c0jx1g7oqv" path="res://assets/Donalds dungeon Dive Title screen.wav" id="4_mgrm8"]
 
 [node name="title_screen" type="Node2D"]
 script = ExtResource("1_s4lrb")
@@ -53,7 +53,7 @@ theme_override_font_sizes/font_size = 37
 text = "QUIT "
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("3_dc4i4")
+stream = ExtResource("4_mgrm8")
 autoplay = true
 
 [connection signal="pressed" from="menu/play" to="." method="_on_play_pressed"]
