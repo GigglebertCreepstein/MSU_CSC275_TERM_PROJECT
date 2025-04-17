@@ -295,6 +295,8 @@ radius = 26.0429
 height = 73.1616
 
 [node name="enemy" type="CharacterBody2D"]
+z_as_relative = false
+y_sort_enabled = true
 collision_layer = 4
 script = ExtResource("1_4gyqm")
 

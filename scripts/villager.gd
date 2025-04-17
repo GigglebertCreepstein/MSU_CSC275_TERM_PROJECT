@@ -13,7 +13,7 @@ func _on_body_entered(_body: Node2D) -> void:
 	$AudioStreamPlayer2D.play()
 	$AnimatedSprite2D.play("villager_saved")
 	$CollisionShape2D.call_deferred("set_disabled", true)
-	$collection_timer.start(1)
+	$collection_timer.start(.6)
 	GameManager.update_mult(multiplier_value)
 
 	

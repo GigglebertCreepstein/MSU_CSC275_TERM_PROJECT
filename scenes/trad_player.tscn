@@ -839,6 +839,8 @@ size = Vector2(29.5, 53.25)
 size = Vector2(32, 56)
 
 [node name="player" type="CharacterBody2D"]
+z_as_relative = false
+y_sort_enabled = true
 collision_layer = 2
 collision_mask = 33
 motion_mode = 1

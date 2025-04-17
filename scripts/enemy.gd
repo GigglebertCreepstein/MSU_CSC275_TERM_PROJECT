@@ -48,7 +48,7 @@ func enemy_death(_area: Area2D) -> void:
 
 	# Disconnect the spawn timer signal to prevent duplicate triggers
 	if $spawn_timer.timeout.is_connected(_on_spawn_timer_timeout):
-		$spawn_timer.timeout.disconnect(_on_spawn_timer_timeout) ### NEW
+		$spawn_timer.timeout.disconnect(_on_spawn_timer_timeout)
 
 	for path in ["hitbox/hitbox_collision", "wall_collision/wall_collision_shape", "attack_collision/attack_shape"]:
 		var node = get_node_or_null(path)
