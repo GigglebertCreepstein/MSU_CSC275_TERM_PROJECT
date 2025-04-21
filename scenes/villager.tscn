@@ -185,8 +185,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_hotao"]
-radius = 23.0
-height = 72.2353
+radius = 25.8824
+height = 88.2353
 
 [node name="villager" type="Area2D"]
 z_as_relative = false
@@ -205,7 +205,7 @@ frame = 8
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.588235, 2.35294)
+position = Vector2(1.17647, 8.82353)
 shape = SubResource("CapsuleShape2D_hotao")
 
 [node name="collection_timer" type="Timer" parent="."]
@@ -215,6 +215,7 @@ one_shot = true
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_37mdv")
+bus = &"sound effects"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

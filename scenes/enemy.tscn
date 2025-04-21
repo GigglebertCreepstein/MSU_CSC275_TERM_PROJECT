@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://g636wece0tif"]
+[gd_scene load_steps=47 format=3 uid="uid://g636wece0tif"]
 
 [ext_resource type="Script" uid="uid://brxqkemserjgq" path="res://scripts/enemy.gd" id="1_4gyqm"]
 [ext_resource type="Texture2D" uid="uid://cl4yv5rcp4md6" path="res://assets/Top_Down_Adventure_Pack_v.1.0/Top_Down_Adventure_Pack_v.1.0/Enemies_Sprites/Pinkslime_Sprites/pinkslime_hit_anim_all_dir_strip_4.png" id="2_4ra3w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://58wkhonf61r7" path="res://assets/team_assets/slime/slime_death_sheet.png" id="4_xwavj"]
 [ext_resource type="Texture2D" uid="uid://cpoecd3atkrr7" path="res://assets/team_assets/slime/Slime-Sheet.png" id="5_nenq2"]
 [ext_resource type="Texture2D" uid="uid://cj5m2p61ufair" path="res://assets/team_assets/slime/slime_spawn_sheet.png" id="6_md484"]
+[ext_resource type="AudioStream" uid="uid://b1n6xpl088aq7" path="res://assets/sound/goopy-slime-4-219777.mp3" id="7_nenq2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c4w8v"]
 atlas = ExtResource("2_4ra3w")
@@ -301,15 +302,19 @@ collision_layer = 4
 script = ExtResource("1_4gyqm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.748215, 0.28367, 0.438969, 1)
 position = Vector2(-16, -1)
 sprite_frames = SubResource("SpriteFrames_hb8ge")
-animation = &"slime_death"
+animation = &"slime_idle"
+frame_progress = 0.21126
 
 [node name="wall_collision_shape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-9.86753, -0.996206)
 shape = SubResource("RectangleShape2D_qiusc")
 
 [node name="hitbox" type="Area2D" parent="."]
+visible = false
 collision_layer = 128
 collision_mask = 8
 
@@ -324,6 +329,7 @@ disabled = true
 [node name="movement_timer" type="Timer" parent="."]
 
 [node name="attack_collision" type="Area2D" parent="."]
+visible = false
 scale = Vector2(0.5, 0.5)
 collision_layer = 16
 collision_mask = 64
@@ -336,6 +342,10 @@ shape = SubResource("CapsuleShape2D_5ie7m")
 disabled = true
 
 [node name="spawn_timer" type="Timer" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_nenq2")
+bus = &"sound effects"
 
 [connection signal="area_entered" from="hitbox" to="." method="enemy_death"]
 [connection signal="timeout" from="hitbox/death_timer" to="." method="_on_death_timer_timeout"]

@@ -864,8 +864,9 @@ scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 64
 
-[node name="slice" type="AudioStreamPlayer" parent="short_attack_Area2D"]
+[node name="slice" type="AudioStreamPlayer2D" parent="short_attack_Area2D"]
 stream = ExtResource("7_jvrhg")
+bus = &"sound effects"
 
 [node name="short_attack_hitbox" type="CollisionShape2D" parent="short_attack_Area2D"]
 position = Vector2(29, 5)
@@ -878,8 +879,9 @@ disabled = true
 collision_layer = 64
 collision_mask = 16
 
-[node name="406113DaleonfireDead-8Bit" type="AudioStreamPlayer" parent="death_collision"]
+[node name="406113DaleonfireDead-8Bit" type="AudioStreamPlayer2D" parent="death_collision"]
 stream = ExtResource("10_wy4cv")
+bus = &"sound effects"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="death_collision"]
 position = Vector2(2, -5)

@@ -41,7 +41,7 @@ func enemy_death(_area: Area2D) -> void:
 
 	velocity = Vector2.ZERO
 	animated_sprite_2d.play("slime_death")
-
+	$AudioStreamPlayer2D.play()
 	movement_timer.stop()
 	set_physics_process(false)
 	set_process(false)
