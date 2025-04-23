@@ -848,8 +848,6 @@ position = Vector2(0, -6.03995)
 scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_2t73j")
 animation = &"death"
-frame = 51
-frame_progress = 1.0
 
 [node name="wall_collision_shape2" type="CollisionShape2D" parent="."]
 position = Vector2(1, -3)
@@ -863,6 +861,7 @@ collision_mask = 64
 
 [node name="slice" type="AudioStreamPlayer" parent="short_attack_Area2D"]
 stream = ExtResource("9_81sn1")
+bus = &"sound effects"
 
 [node name="short_attack_hitbox" type="CollisionShape2D" parent="short_attack_Area2D"]
 position = Vector2(0, 6)

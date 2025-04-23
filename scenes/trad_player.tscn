@@ -851,7 +851,7 @@ speed = 250
 position = Vector2(0, -6.03995)
 scale = Vector2(2.3, 2.3)
 sprite_frames = SubResource("SpriteFrames_2t73j")
-animation = &"death"
+animation = &"move_down"
 
 [node name="wall_collision_shape2" type="CollisionShape2D" parent="."]
 visible = false
@@ -884,7 +884,7 @@ stream = ExtResource("10_wy4cv")
 bus = &"sound effects"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="death_collision"]
-position = Vector2(2, -5)
+position = Vector2(1, 3)
 shape = SubResource("RectangleShape2D_bggmf")
 
 [connection signal="body_entered" from="short_attack_Area2D" to="." method="_on_short_attack_area_2d_body_entered"]

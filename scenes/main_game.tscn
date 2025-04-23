@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6k3s73sfqaoo"]
+[gd_scene load_steps=8 format=3 uid="uid://c6k3s73sfqaoo"]
 
 [ext_resource type="Script" uid="uid://yhrye3d7tahq" path="res://scripts/game.gd" id="1_wi4c7"]
 [ext_resource type="PackedScene" uid="uid://b8s4lbedk4w4w" path="res://scenes/tilemap_final.tscn" id="2_ygxny"]
 [ext_resource type="Script" uid="uid://c0ta67er71jdm" path="res://scripts/hud.gd" id="4_nqdth"]
 [ext_resource type="FontFile" uid="uid://cufjgh3gelqqk" path="res://assets/old_london/OldLondon.ttf" id="5_5cypo"]
 [ext_resource type="AudioStream" uid="uid://duhijghficgtn" path="res://assets/sound/donalds_disasterous_defeat.wav" id="6_ygxny"]
+[ext_resource type="Texture2D" uid="uid://vf1odus58sh8" path="res://assets/team_assets/tileset/DraculaThrone.png" id="7_70vka"]
 [ext_resource type="PackedScene" uid="uid://bdb41aisf0bvp" path="res://scenes/trad_player.tscn" id="7_wi4c7"]
 
 [node name="main_game" type="Node2D"]
@@ -60,3 +61,8 @@ scale = Vector2(1.1, 1.1)
 stream = ExtResource("6_ygxny")
 autoplay = true
 bus = &"music"
+
+[node name="dracula" type="Sprite2D" parent="."]
+position = Vector2(1646, 711)
+scale = Vector2(7, 7)
+texture = ExtResource("7_70vka")
