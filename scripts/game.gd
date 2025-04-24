@@ -9,6 +9,7 @@ var current_spawn_rate: float = base_spawn_rate
 @export var villager_spawn_rate: float = 5.0  # Fixed 5-second interval for villagers
 var enemy_timer: Timer
 var villager_timer: Timer
+var game_active = false
 
 func _ready():
 	# Enemy spawn timer
