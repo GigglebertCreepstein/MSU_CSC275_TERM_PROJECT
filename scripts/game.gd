@@ -1,7 +1,7 @@
 extends Node2D
 
-@export var enemy_scene: PackedScene = preload("res://scenes/enemy.tscn")
-@export var villager_scene: PackedScene = preload("res://scenes/villager.tscn")
+@export var enemy_scene: PackedScene = preload("res://scenes/objects/enemy.tscn")
+@export var villager_scene: PackedScene = preload("res://scenes/objects/villager.tscn")
 @export var spawn_area: Rect2 = Rect2(96, 128, 672, 256) #adjust spawn area of mobs
 @export var spawn_aggresion = .2
 var base_spawn_rate: float = 3.0 # Base enemy spawn rate
@@ -9,9 +9,16 @@ var current_spawn_rate: float = base_spawn_rate
 @export var villager_spawn_rate: float = 5.0  # Fixed 5-second interval for villagers
 var enemy_timer: Timer
 var villager_timer: Timer
-var game_active = false
 
+var start_text = ["“Prepare thyself, Challenger!”
+","“Thou shalt ne’er defeat me!”
+","“Dost thine thinkest thineself a hero?"]
 func _ready():
+	$HUD/game_start_textbox/GameStart.play()
+func _on_ready_timer_timeout() -> void:
+	$AudioStreamPlayer2D.play()
+	$player.freeze_player = false
+	$HUD/game_start_textbox.visible = false
 	# Enemy spawn timer
 	enemy_timer = Timer.new()
 	enemy_timer.wait_time = current_spawn_rate
@@ -29,6 +36,7 @@ func _ready():
 	add_child(villager_timer)
 	
 	GameManager.update_mult_HUD.connect(_update_hud)
+
 
 func _spawn_enemy():
 	if enemy_scene:

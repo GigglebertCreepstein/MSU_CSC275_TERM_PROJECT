@@ -31,7 +31,7 @@ func _ready() -> void:
 func _on_play_again_pressed() -> void:
 	GameManager.score = 0
 	GameManager.multiplier = 1.0
-	get_tree().change_scene_to_file("res://scenes/main_game.tscn")
+	get_tree().change_scene_to_file("res://scenes/menu_scenes/main_game.tscn")
 
 func _on_quit_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/title_screen.tscn")
+	get_tree().change_scene_to_file("res://scenes/menu_scenes/title_screen.tscn")

@@ -5,7 +5,7 @@ extends CharacterBody2D
 @onready var attack_timer: Timer = $short_attack_Area2D/attack_timer
 ##################GLOBAL VARIABLES#########
 @export var speed = 200
-var freeze_player = false
+var freeze_player = true
 enum direction { LEFT, RIGHT, UP, DOWN, UP_RIGHT, UP_LEFT, DOWN_RIGHT, DOWN_LEFT}
 var current_direction = direction.DOWN
 var is_alive = true

@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://b6nahsrx7m4du"]
+
+[ext_resource type="Script" uid="uid://q502uycqxpyi" path="res://scripts/title_screen.gd" id="1_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://0b00qici0n" path="res://assets/team_assets/miscellaneous/titlescreen.png" id="2_mgrm8"]
+[ext_resource type="FontFile" uid="uid://cufjgh3gelqqk" path="res://assets/old_london/OldLondon.ttf" id="3_mgrm8"]
+[ext_resource type="AudioStream" uid="uid://ce4c0jx1g7oqv" path="res://assets/team_assets/music/Donalds dungeon Dive Title screen.wav" id="4_mgrm8"]
+
+[node name="title_screen" type="Node2D"]
+script = ExtResource("1_s4lrb")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(926, 551.5)
+scale = Vector2(20.06, 17.4531)
+texture = ExtResource("2_mgrm8")
+
+[node name="title" type="Label" parent="."]
+offset_left = 219.0
+offset_top = 4.0
+offset_right = 879.0
+offset_bottom = 103.0
+scale = Vector2(3, 3)
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 60
+text = "     DONALD'S
+ DUNGEON DIVE "
+
+[node name="menu" type="VBoxContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 705.0
+offset_top = 418.0
+offset_right = 880.0
+offset_bottom = 594.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+
+[node name="play" type="Button" parent="menu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 60
+text = "Play"
+
+[node name="options" type="Button" parent="menu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 60
+text = "Extras"
+
+[node name="quit" type="Button" parent="menu"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mgrm8")
+theme_override_font_sizes/font_size = 60
+text = "Quit"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_mgrm8")
+autoplay = true
+
+[connection signal="pressed" from="menu/play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="menu/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="menu/quit" to="." method="_on_quit_pressed"]
