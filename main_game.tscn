@@ -1,0 +1,138 @@
+[gd_scene load_steps=10 format=3 uid="uid://c6k3s73sfqaoo"]
+
+[ext_resource type="Script" uid="uid://yhrye3d7tahq" path="res://scripts/game.gd" id="1_mj5r3"]
+[ext_resource type="PackedScene" uid="uid://b8s4lbedk4w4w" path="res://scenes/misc/tilemap_final.tscn" id="2_6bixu"]
+[ext_resource type="Script" uid="uid://c0ta67er71jdm" path="res://scripts/hud.gd" id="3_njcyj"]
+[ext_resource type="FontFile" uid="uid://cufjgh3gelqqk" path="res://assets/old_london/OldLondon.ttf" id="4_j8f7b"]
+[ext_resource type="AudioStream" uid="uid://ci5y4tj0xeuda" path="res://assets/team_assets/music/game start.wav" id="5_ppdr8"]
+[ext_resource type="Texture2D" uid="uid://cc2hpw3twoaik" path="res://assets/team_assets/miscellaneous/Dracula_talking_head.png" id="6_5j105"]
+[ext_resource type="PackedScene" uid="uid://bdb41aisf0bvp" path="res://scenes/objects/donald.tscn" id="7_8bykg"]
+[ext_resource type="AudioStream" uid="uid://duhijghficgtn" path="res://assets/team_assets/music/donalds_disasterous_defeat.wav" id="8_g4qx8"]
+[ext_resource type="Texture2D" uid="uid://vf1odus58sh8" path="res://assets/team_assets/tileset/DraculaThrone.png" id="9_cfjt0"]
+
+[node name="main_game" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_mj5r3")
+spawn_area = Rect2(210, 260, 1092, 580)
+villager_spawn_rate = 8.0
+
+[node name="map" parent="." instance=ExtResource("2_6bixu")]
+position = Vector2(16, 83)
+scale = Vector2(0.9, 0.9)
+
+[node name="HUD" type="Control" parent="."]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1061.0
+offset_top = 27.0
+offset_right = 1101.0
+offset_bottom = 67.0
+scale = Vector2(1.5, 1.5)
+script = ExtResource("3_njcyj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 21.0
+offset_right = 622.0
+offset_bottom = 409.0
+theme_override_constants/separation = 20
+
+[node name="score_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
+text = "Score: 0"
+
+[node name="round_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
+text = "Round: 0"
+
+[node name="timer_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
+text = "Time: 20"
+
+[node name="mult_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
+text = "Multiplier: 1.0"
+
+[node name="enemies_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
+text = "Enemies: 0"
+
+[node name="previous_high_score_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
+
+[node name="game_start_textbox" type="Control" parent="HUD"]
+anchors_preset = 0
+offset_left = 5.33333
+offset_top = 58.0
+offset_right = 45.3333
+offset_bottom = 98.0
+
+[node name="GameStart" type="AudioStreamPlayer" parent="HUD/game_start_textbox"]
+stream = ExtResource("5_ppdr8")
+volume_db = 1.606
+
+[node name="border" type="ColorRect" parent="HUD/game_start_textbox"]
+layout_mode = 2
+offset_left = -494.667
+offset_top = 160.0
+offset_right = 92.3333
+offset_bottom = 281.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.282353, 0.211765, 0.356863, 1)
+
+[node name="inner" type="ColorRect" parent="HUD/game_start_textbox"]
+layout_mode = 2
+offset_left = -489.0
+offset_top = 165.0
+offset_right = 86.0
+offset_bottom = 273.0
+color = Color(0.395019, 0.334605, 0.475973, 1)
+
+[node name="Label" type="Label" parent="HUD/game_start_textbox"]
+layout_mode = 0
+offset_left = -464.0
+offset_top = 195.333
+offset_right = -72.0
+offset_bottom = 237.333
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 40
+text = "\"Prepare thyself, challenger!\""
+
+[node name="Sprite2D" type="Sprite2D" parent="HUD/game_start_textbox"]
+position = Vector2(-4.66667, 213.333)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("6_5j105")
+
+[node name="ready_timer" type="Timer" parent="HUD/game_start_textbox"]
+wait_time = 4.0
+one_shot = true
+autostart = true
+
+[node name="player" parent="." instance=ExtResource("7_8bykg")]
+position = Vector2(756, 572)
+scale = Vector2(1.1, 1.1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_g4qx8")
+
+[node name="dracula" type="Sprite2D" parent="."]
+position = Vector2(1646, 711)
+scale = Vector2(7, 7)
+texture = ExtResource("9_cfjt0")
+
+[connection signal="timeout" from="HUD/game_start_textbox/ready_timer" to="." method="_on_ready_timer_timeout"]
