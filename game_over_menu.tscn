@@ -1,0 +1,104 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwp52wtvfsbqg"]
+
+[ext_resource type="Script" uid="uid://b54tcoh1e0ema" path="res://scripts/game_over_menu.gd" id="1_muqun"]
+[ext_resource type="AudioStream" uid="uid://ik3le6fhxx17" path="res://assets/sound/fanfare-46385.mp3" id="2_4pbyd"]
+[ext_resource type="Texture2D" uid="uid://bduspa0ckv1f7" path="res://assets/team_assets/miscellaneous/istockphoto-1368003085-612x612.jpg" id="3_niccr"]
+[ext_resource type="FontFile" uid="uid://cufjgh3gelqqk" path="res://assets/old_london/OldLondon.ttf" id="4_8gbuk"]
+
+[node name="Node2D" type="Node2D"]
+scale = Vector2(1.25, 1.23)
+script = ExtResource("1_muqun")
+
+[node name="Fanfare-46385" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_4pbyd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(758.75, 444.5)
+scale = Vector2(2.5482, 2.63205)
+texture = ExtResource("3_niccr")
+
+[node name="labels" type="Node2D" parent="."]
+
+[node name="flavor_text" type="Label" parent="labels"]
+offset_left = 109.0
+offset_top = 235.0
+offset_right = 1507.0
+offset_bottom = 308.0
+theme_override_font_sizes/font_size = 25
+text = "\"For many a year have I fought, and for many more shall I prevail.
+Till no children of the night are harmed henceforth.\""
+horizontal_alignment = 1
+
+[node name="GAME_OVER" type="Label" parent="labels"]
+offset_left = 494.0
+offset_top = 118.0
+offset_right = 1014.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("4_8gbuk")
+theme_override_font_sizes/font_size = 90
+text = "GAME OVER!"
+
+[node name="score" type="Label" parent="labels"]
+offset_left = 581.0
+offset_top = 435.0
+offset_right = 961.0
+offset_bottom = 507.0
+theme_override_fonts/font = ExtResource("4_8gbuk")
+theme_override_font_sizes/font_size = 60
+text = "SCORE: N/A "
+
+[node name="high_score" type="Label" parent="labels"]
+offset_left = 587.0
+offset_top = 343.0
+offset_right = 967.0
+offset_bottom = 415.0
+size_flags_horizontal = 0
+theme_override_fonts/font = ExtResource("4_8gbuk")
+theme_override_font_sizes/font_size = 60
+text = "BEST: N/A"
+
+[node name="new_high_score" type="Label" parent="labels"]
+visible = false
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 461.6
+offset_top = 357.724
+offset_right = 1002.6
+offset_bottom = 429.724
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("4_8gbuk")
+theme_override_font_sizes/font_size = 60
+text = "NEW HIFH SCORE!"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="play again" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 562.0
+offset_top = 536.0
+offset_right = 968.0
+offset_bottom = 636.0
+theme_override_fonts/font = ExtResource("4_8gbuk")
+theme_override_font_sizes/font_size = 60
+text = "Play again"
+
+[node name="quit" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 563.0
+offset_top = 671.0
+offset_right = 969.0
+offset_bottom = 771.0
+theme_override_fonts/font = ExtResource("4_8gbuk")
+theme_override_font_sizes/font_size = 60
+text = "Quit to Title"
+
+[connection signal="pressed" from="Control/play again" to="." method="_on_play_again_pressed"]
+[connection signal="pressed" from="Control/quit" to="." method="_on_quit_pressed"]
