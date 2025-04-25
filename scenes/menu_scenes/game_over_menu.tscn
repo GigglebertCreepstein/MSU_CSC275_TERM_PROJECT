@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b54tcoh1e0ema" path="res://scripts/game_over_menu.gd" id="1_muqun"]
 [ext_resource type="AudioStream" uid="uid://ik3le6fhxx17" path="res://assets/sound/fanfare-46385.mp3" id="2_4pbyd"]
-[ext_resource type="Texture2D" uid="uid://bduspa0ckv1f7" path="res://assets/team_assets/miscellaneous/istockphoto-1368003085-612x612.jpg" id="3_niccr"]
+[ext_resource type="Texture2D" uid="uid://c5snwrd3cadge" path="res://assets/team_assets/miscellaneous/game_over_background.png" id="3_muqun"]
 [ext_resource type="FontFile" uid="uid://cufjgh3gelqqk" path="res://assets/old_london/OldLondon.ttf" id="4_8gbuk"]
 
 [node name="Node2D" type="Node2D"]
@@ -13,9 +13,9 @@ script = ExtResource("1_muqun")
 stream = ExtResource("2_4pbyd")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(758.75, 444.5)
-scale = Vector2(2.5482, 2.63205)
-texture = ExtResource("3_niccr")
+position = Vector2(832, 429.268)
+scale = Vector2(16.52, 11.3008)
+texture = ExtResource("3_muqun")
 
 [node name="labels" type="Node2D" parent="."]
 
