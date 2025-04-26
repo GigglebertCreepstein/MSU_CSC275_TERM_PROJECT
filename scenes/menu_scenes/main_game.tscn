@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c6k3s73sfqaoo"]
 
 [ext_resource type="Script" uid="uid://yhrye3d7tahq" path="res://scripts/game.gd" id="1_mj5r3"]
-[ext_resource type="PackedScene" uid="uid://b8s4lbedk4w4w" path="res://scenes/tilemap_final.tscn" id="2_6bixu"]
+[ext_resource type="PackedScene" uid="uid://b8s4lbedk4w4w" path="res://scenes/misc/tilemap_final.tscn" id="2_6bixu"]
 [ext_resource type="Script" uid="uid://c0ta67er71jdm" path="res://scripts/hud.gd" id="3_njcyj"]
 [ext_resource type="FontFile" uid="uid://cufjgh3gelqqk" path="res://assets/old_london/OldLondon.ttf" id="4_j8f7b"]
 [ext_resource type="AudioStream" uid="uid://ci5y4tj0xeuda" path="res://assets/team_assets/music/game start.wav" id="5_ppdr8"]
@@ -14,7 +14,6 @@
 y_sort_enabled = true
 script = ExtResource("1_mj5r3")
 spawn_area = Rect2(210, 260, 1092, 580)
-spawn_aggresion = 1.3
 villager_spawn_rate = 8.0
 
 [node name="map" parent="." instance=ExtResource("2_6bixu")]
@@ -32,28 +31,48 @@ offset_bottom = 67.0
 scale = Vector2(1.5, 1.5)
 script = ExtResource("3_njcyj")
 
-[node name="score_label" type="Label" parent="HUD"]
+[node name="VBoxContainer" type="VBoxContainer" parent="HUD"]
 layout_mode = 0
-offset_left = 285.333
-offset_top = 13.3333
-offset_right = 419.333
-offset_bottom = 52.3333
+offset_left = 287.0
+offset_top = 21.0
+offset_right = 622.0
+offset_bottom = 409.0
+theme_override_constants/separation = 20
+
+[node name="score_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("4_j8f7b")
 theme_override_font_sizes/font_size = 35
 text = "Score: 0"
 
-[node name="mult_label" type="Label" parent="HUD"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -1.472
-anchor_top = -0.242
-offset_left = 343.547
-offset_top = 77.68
-offset_right = 507.667
-offset_bottom = 107.0
+[node name="round_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
+text = "Round: 0"
+
+[node name="timer_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
+text = "Time: 20"
+
+[node name="mult_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
 theme_override_fonts/font = ExtResource("4_j8f7b")
 theme_override_font_sizes/font_size = 35
 text = "Multiplier: 1.0"
+
+[node name="enemies_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
+text = "Enemies: 0"
+
+[node name="previous_high_score_label" type="Label" parent="HUD/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("4_j8f7b")
+theme_override_font_sizes/font_size = 35
 
 [node name="game_start_textbox" type="Control" parent="HUD"]
 anchors_preset = 0
@@ -110,8 +129,6 @@ scale = Vector2(1.1, 1.1)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_g4qx8")
-volume_db = 20.8
-bus = &"music"
 
 [node name="dracula" type="Sprite2D" parent="."]
 position = Vector2(1646, 711)

@@ -1,23 +1,23 @@
 extends Node2D
-var _save_data : save_data
+"""
+Title screen with play, options, and quit buttons.
+Handles initial game setup and save data loading.
+"""
 
 func _ready() -> void:
-	_save_data = save_data.new()
-	if  ResourceLoader.exists("user://save_data.tres"):
-		_save_data = ResourceLoader.load("user://save_data.tres")
-		print(GameManager.high_score, _save_data.high_score)
-		if GameManager.high_score > _save_data.high_score:
-			_save_data.high_score = GameManager.high_score
-		else:	
-			GameManager.high_score = _save_data.high_score
-
+	"""Initialize title screen and ensure GameManager has loaded data."""
+	# GameManager will handle all save data operations
+	GameManager.load_game()
+	
 func _on_play_pressed() -> void:
+	"""Start new game."""
 	get_tree().change_scene_to_file("res://scenes/menu_scenes/main_game.tscn")
 
 func _on_quit_pressed() -> void:
-	_save_data.high_score = GameManager.high_score
-	ResourceSaver.save(_save_data, "user://save_data.tres")
-	get_tree().call_deferred("quit")
+	"""Quit game after saving."""
+	GameManager.save_game()  # Let GameManager handle saving
+	get_tree().quit()
 
 func _on_options_pressed() -> void:
+	"""Open options menu."""
 	get_tree().change_scene_to_file("res://scenes/menu_scenes/options.tscn")

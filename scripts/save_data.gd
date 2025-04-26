@@ -1,5 +1,6 @@
 class_name save_data extends Resource
-@export var high_score = 0
-
-func _init() -> void:
-	high_score = GameManager.high_score
+"""
+Simple resource for saving game data.
+Persists between game sessions.
+"""
+@export var high_score := 0
