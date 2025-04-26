@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://58wkhonf61r7" path="res://assets/team_assets/slime/slime_death_sheet.png" id="2_3ch6f"]
 [ext_resource type="Texture2D" uid="uid://cpoecd3atkrr7" path="res://assets/team_assets/slime/Slime-Sheet.png" id="3_hlxuo"]
 [ext_resource type="Texture2D" uid="uid://cj5m2p61ufair" path="res://assets/team_assets/slime/slime_spawn_sheet.png" id="4_rxs05"]
-[ext_resource type="AudioStream" uid="uid://b1n6xpl088aq7" path="res://assets/sound/goopy-slime-4-219777.mp3" id="5_ogwgt"]
+[ext_resource type="AudioStream" uid="uid://b1n6xpl088aq7" path="res://assets/team_assets/sound/goopy-slime-4-219777.mp3" id="5_ogwgt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g0wcc"]
 atlas = ExtResource("2_3ch6f")
@@ -201,9 +201,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2tuss")
 }],
-"loop": true,
+"loop": false,
 "name": &"slime_spawn",
-"speed": 3.0
+"speed": 2.5
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qiusc"]

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d15ccee60ljb3" path="res://assets/team_assets/villager_new/Villagers2Idle.png" id="3_bsbc1"]
 [ext_resource type="Texture2D" uid="uid://eydt07upb3k3" path="res://assets/team_assets/villager_new/VillagerSpawn.png" id="4_4qmpu"]
 [ext_resource type="Texture2D" uid="uid://b2t4fs33d15rk" path="res://assets/team_assets/villager_new/Villagers2Spawn.png" id="5_vic13"]
-[ext_resource type="AudioStream" uid="uid://np2cnmiypbob" path="res://assets/sound/516827__mrthenoronha__get-item-1-8-bit.wav" id="6_qsb0c"]
+[ext_resource type="AudioStream" uid="uid://np2cnmiypbob" path="res://assets/team_assets/sound/516827__mrthenoronha__get-item-1-8-bit.wav" id="6_qsb0c"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0ief"]
 atlas = ExtResource("2_52ldj")

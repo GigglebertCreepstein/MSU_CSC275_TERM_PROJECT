@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://c6k3s73sfqaoo"]
 
 [ext_resource type="Script" uid="uid://yhrye3d7tahq" path="res://scripts/game.gd" id="1_mj5r3"]
-[ext_resource type="PackedScene" uid="uid://b8s4lbedk4w4w" path="res://scenes/misc/tilemap_final.tscn" id="2_6bixu"]
+[ext_resource type="PackedScene" uid="uid://b8s4lbedk4w4w" path="res://scenes/tilemap_final.tscn" id="2_6bixu"]
 [ext_resource type="Script" uid="uid://c0ta67er71jdm" path="res://scripts/hud.gd" id="3_njcyj"]
 [ext_resource type="FontFile" uid="uid://cufjgh3gelqqk" path="res://assets/old_london/OldLondon.ttf" id="4_j8f7b"]
 [ext_resource type="AudioStream" uid="uid://ci5y4tj0xeuda" path="res://assets/team_assets/music/game start.wav" id="5_ppdr8"]
@@ -15,6 +15,9 @@ y_sort_enabled = true
 script = ExtResource("1_mj5r3")
 spawn_area = Rect2(210, 260, 1092, 580)
 villager_spawn_rate = 8.0
+initial_spawn_rate = 2.0
+spawn_rate_decrease = 0.5
+enemies_per_round_increase = 5
 
 [node name="map" parent="." instance=ExtResource("2_6bixu")]
 position = Vector2(16, 83)

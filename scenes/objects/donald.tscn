@@ -8,8 +8,8 @@
 [ext_resource type="Texture2D" uid="uid://dkcd3bah3d4i4" path="res://assets/team_assets/donald/donald_walk_FB.png" id="6_xw1rv"]
 [ext_resource type="Texture2D" uid="uid://dmqii2njucgrr" path="res://assets/team_assets/donald/Walk_Left-Sheet.png" id="7_nahdl"]
 [ext_resource type="Texture2D" uid="uid://fi5gtjkuuj8t" path="res://assets/team_assets/donald/Walk_right-Sheet.png" id="8_d2k8u"]
-[ext_resource type="AudioStream" uid="uid://c2jx6yo4qskwg" path="res://assets/sound/retro-hurt-1-236672(1).mp3" id="9_o2awp"]
-[ext_resource type="AudioStream" uid="uid://ptkje0sse33u" path="res://assets/sound/406113__daleonfire__dead-8bit.wav" id="10_iid7v"]
+[ext_resource type="AudioStream" uid="uid://c2jx6yo4qskwg" path="res://assets/team_assets/sound/retro-hurt-1-236672(1).mp3" id="9_o2awp"]
+[ext_resource type="AudioStream" uid="uid://ptkje0sse33u" path="res://assets/team_assets/sound/406113__daleonfire__dead-8bit.wav" id="10_iid7v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wy4cv"]
 atlas = ExtResource("2_mvdj3")
@@ -836,7 +836,7 @@ size = Vector2(25, 36.6875)
 size = Vector2(29.5, 53.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bggmf"]
-size = Vector2(32, 56)
+size = Vector2(32, 32)
 
 [node name="player" type="CharacterBody2D"]
 z_as_relative = false
@@ -882,7 +882,7 @@ collision_mask = 16
 stream = ExtResource("10_iid7v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="death_collision"]
-position = Vector2(1, 3)
+position = Vector2(1, 8)
 shape = SubResource("RectangleShape2D_bggmf")
 
 [connection signal="body_entered" from="short_attack_Area2D" to="." method="_on_short_attack_area_2d_body_entered"]

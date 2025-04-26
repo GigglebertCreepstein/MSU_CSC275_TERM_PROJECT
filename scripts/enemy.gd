@@ -24,7 +24,7 @@ var enemy_spawned := false    # Tracks if spawn animation completed
 func _ready() -> void:
 	"""Initialize enemy with spawn animation and setup timers."""
 	animated_sprite_2d.play("slime_spawn")
-	$spawn_timer.start(1)  # Start spawn sequence
+	$spawn_timer.start(1.5)  # Start spawn sequence
 
 func _on_spawn_timer_timeout() -> void:
 	"""Complete spawn sequence and begin normal behavior."""
