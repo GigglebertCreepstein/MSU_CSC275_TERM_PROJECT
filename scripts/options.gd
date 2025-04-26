@@ -7,9 +7,9 @@ Options menu handling audio settings and high score reset.
 
 func _ready():
 	"""Initialize confirmation dialog."""
-	confirmation_dialog.dialog_text = "Reset ALL high scores?\nThis cannot be undone!"
-	confirmation_dialog.get_ok_button().text = "Reset"
-	confirmation_dialog.get_cancel_button().text = "Cancel"
+#	confirmation_dialog.dialog_text = "Reset ALL high scores?\nThis cannot be undone!"
+#	confirmation_dialog.get_ok_button().text = "Reset"
+#	confirmation_dialog.get_cancel_button().text = "Cancel"
 
 func _on_back_button_pressed() -> void:
 	"""Return to title screen."""
