@@ -1,5 +1,10 @@
 extends Node2D
+"""
+Game over screen displaying results and high scores.
+Handles player choices after game ends.
+"""
 
+# Dialogue Options
 var flavor_text_fail = ["“I shall ne’er meet my fall by the likes of you.”",
 "“Alas, mine vengeance shall not be denied.”",
 "“For many a year have I fought, and for many more shall I prevail.\nTill no children of the night are harmed henceforth.”",
@@ -9,12 +14,15 @@ var flavor_text_fail = ["“I shall ne’er meet my fall by the likes of you.”
 "“We shall feast tonight.”",
 "“Why doth yonder kingdom persist in sending numbskulls clad in iron?\n This one bore naught but a stick.”",
 "“No justice lies in wanton bloodshed. Depart henceforth, and burden these lands no more.”",
-"“Mere slime, how darest thou call thineself a warrior?”"]
+"“Mere slime, how darest thou call thineself a warrior?”"
+]
 
 var flavor_text_success = ["""Thoust has proven thine mettle. Take mine life as a tribute, rise as a champion of the realm.
-Permit me at last to join my son in the melodious halls beyond.""","""Alas, I shall retreat.\nFor on this day I met a spirit brave gallant to brave mine trials with unyielding valor."""]
+Permit me at last to join my son in the melodious halls beyond.""","""Alas, I shall retreat.\nFor on this day I met a spirit brave gallant to brave mine trials with unyielding valor."""
+]
 
 func _ready() -> void:
+	"""Setup game over screen based on score."""
 	if GameManager.new_high_score:
 		GameManager.new_high_score = false
 		$"Fanfare-46385".play()
@@ -23,15 +31,17 @@ func _ready() -> void:
 		$labels/high_score.visible = false
 		$labels/new_high_score.visible = true
 	else:
-			$labels/flavor_text.text = flavor_text_fail[randi_range(0,9)]
-			$labels/score.text = "Score: " + str(GameManager.score)
-			$labels/high_score.text = "Best: " + str(GameManager.high_score)
-			$labels/new_high_score.visible = false
+		$labels/flavor_text.text = flavor_text_fail[randi_range(0,9)]
+		$labels/score.text = "Score: " + str(GameManager.score)
+		$labels/high_score.text = "Best: " + str(GameManager.high_score)
+		$labels/new_high_score.visible = false
 	
 func _on_play_again_pressed() -> void:
+	"""Restart game with reset scores."""
 	GameManager.score = 0
 	GameManager.multiplier = 1.0
 	get_tree().change_scene_to_file("res://scenes/menu_scenes/main_game.tscn")
 
 func _on_quit_pressed() -> void:
+	"""Return to title screen."""
 	get_tree().change_scene_to_file("res://scenes/menu_scenes/title_screen.tscn")
