@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="dracula's_mansion_player_MK1"
+config/name="Donald's Dungeon Dive"
 run/main_scene="uid://b6nahsrx7m4du"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="uid://vf1odus58sh8"

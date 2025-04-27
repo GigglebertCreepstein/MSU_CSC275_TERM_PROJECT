@@ -14,15 +14,16 @@ scale = Vector2(20.06, 17.4531)
 texture = ExtResource("2_mgrm8")
 
 [node name="title" type="Label" parent="."]
-offset_left = 219.0
+offset_left = -77.0
 offset_top = 4.0
-offset_right = 879.0
+offset_right = 591.0
 offset_bottom = 103.0
 scale = Vector2(3, 3)
 theme_override_fonts/font = ExtResource("3_mgrm8")
 theme_override_font_sizes/font_size = 60
-text = "     DONALD'S
- DUNGEON DIVE "
+text = "DONALD'S
+DUNGEON DIVE "
+horizontal_alignment = 1
 
 [node name="menu" type="VBoxContainer" parent="."]
 anchors_preset = 8
