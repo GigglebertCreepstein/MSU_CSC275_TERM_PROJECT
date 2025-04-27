@@ -39,23 +39,25 @@ theme_override_font_sizes/font_size = 90
 text = "GAME OVER!"
 
 [node name="score" type="Label" parent="labels"]
-offset_left = 581.0
+offset_left = 564.0
 offset_top = 435.0
-offset_right = 961.0
+offset_right = 966.0
 offset_bottom = 507.0
 theme_override_fonts/font = ExtResource("4_8gbuk")
 theme_override_font_sizes/font_size = 60
 text = "SCORE: N/A "
+horizontal_alignment = 1
 
 [node name="high_score" type="Label" parent="labels"]
-offset_left = 587.0
+offset_left = 561.0
 offset_top = 343.0
-offset_right = 967.0
+offset_right = 965.0
 offset_bottom = 415.0
 size_flags_horizontal = 0
 theme_override_fonts/font = ExtResource("4_8gbuk")
 theme_override_font_sizes/font_size = 60
 text = "BEST: N/A"
+horizontal_alignment = 1
 
 [node name="new_high_score" type="Label" parent="labels"]
 visible = false
