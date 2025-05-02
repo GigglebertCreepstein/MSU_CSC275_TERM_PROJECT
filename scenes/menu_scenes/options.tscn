@@ -219,7 +219,6 @@ theme_override_font_sizes/font_size = 26
 text = "back"
 
 [node name="credits_menu" type="ColorRect" parent="menus"]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -260,6 +259,26 @@ scale = Vector2(2.5, 2.5)
 theme_override_fonts/font = ExtResource("3_2iy26")
 theme_override_font_sizes/font_size = 26
 text = "back"
+
+[node name="Label" type="Label" parent="menus/credits_menu"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 624.445
+offset_right = 1161.0
+offset_bottom = 735.445
+theme_override_fonts/font = ExtResource("3_2iy26")
+theme_override_font_sizes/font_size = 43
+text = " Daleonfire - Mrthenoronh - Ricniclas - Floraphonic - Driken 5482"
+
+[node name="Label" type="Label" parent="menus/credits_menu/Label"]
+layout_mode = 0
+offset_left = 244.444
+offset_top = -55.5556
+offset_right = 785.444
+offset_bottom = -6.55556
+theme_override_fonts/font = ExtResource("3_2iy26")
+theme_override_font_sizes/font_size = 52
+text = "Additional Sound effects By:"
 
 [node name="story_menu" type="ColorRect" parent="menus"]
 visible = false
